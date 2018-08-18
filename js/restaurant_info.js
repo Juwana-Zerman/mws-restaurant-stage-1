@@ -22,7 +22,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: '<pk.eyJ1Ijoianplcm1hbiIsImEiOiJjamt2ZnY2dXMwcTV3M3dtdHFsY3VlaDhoIn0.9Foo09oDgGM6BQYlTssuBA>',
+        accessToken: 'sk.eyJ1Ijoianplcm1hbiIsImEiOiJjamt5c3U3cXEwbXVsM2txeHhqMW52bWZyIn0.LqLz5kHLHz6Zp2e46UbDoQ',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -109,6 +109,17 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
   for (let key in operatingHours) {
     const row = document.createElement('tr');
 
+    //Create Attribute for Tabindex on row
+    let label_tabindex= document.createAttribute("tabindex");
+    label_tabindex.value = 0;
+    //Set the attribute to the row
+    row.setAttributeNode(label_tabindex);
+
+    //Aria labelled by
+    let label_attribute = document.createAttribute("aria-labelledby");
+    label_attribute.value = key + "_label";
+    row.setAttributeNode(label_attribute);
+
     const day = document.createElement('td');
     day.innerHTML = key;
     row.appendChild(day);
@@ -118,6 +129,12 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     row.appendChild(time);
 
     hours.appendChild(row);
+
+    //Aria label for row that speaks day & hours
+    let aria_label = document.createElement('label');
+    aria_label.id = key + "_label";
+    aria_label.className = "aria-label";
+    aria_label.innerHTML = key + operatingHours[key];
   }
 }
 
@@ -163,6 +180,25 @@ createReviewHTML = (review) => {
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
   li.appendChild(comments);
+
+  // Add Tab Index for the List Element
+  var label_tabindex = document.createAttribute("tabindex");       
+  label_tabindex.value = 0;
+  // Set the attribute to the row
+  li.setAttributeNode(label_tabindex);
+
+  // Add Aria LabelledBy Attribute for Review
+  var label_attribute = document.createAttribute("aria-labelledby");    
+  label_attribute.value = review_id + "_label";                         
+  li.setAttributeNode(label_attribute); 
+
+  // Add Aria Label for Single Review
+  var aria_label = document.createElement('label');
+  aria_label.id = review_id + "_label";
+  aria_label.className = "aria-label";
+  aria_label.innerHTML = "Rating " + review.rating + " stars. Date " + review.date + ". Reviewed By " + review.name + ". Comments: " + review.comments;
+
+  li.appendChild(aria_label);
 
   return li;
 }

@@ -4,6 +4,8 @@
         "cacheadd",
         "dbhelper",
         "googlecode",
+        "labelledby",
+        "latlng",
         "maincontent",
         "scrollwheel",
         "statechange"

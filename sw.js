@@ -1,68 +1,11 @@
 const currentCacheName = 'restaurant-static-v1';
 
-/*self.addEventListener('install', event => {
+self.addEventListener('install', event => {
     event.waitUntil(
       caches.open(currentCacheName)
       .then(cache => {
-        return cache.addAll([*/
-
-const urlsToCache = [
-          '/',
-          './css/styles.css',
-          './data/restaurants.json',
-          './img/1.jpg',
-          './img/2.jpg',
-          './img/3.jpg',
-          './img/4.jpg',
-          './img/5.jpg',
-          './img/6.jpg',
-          './img/7.jpg',
-          './img/8.jpg',
-          './img/9.jpg',
-          './img/10.jpg',
-          './js/dbhelper.js',
-          './js/main.js',
-          './js/restaurant_info.js',
-          /*'./index.html',
-          './restaurant.html'*/
-        ];
-       
-  self.addEventListener('install',  event => {
-      event.waitUntil(caches.open(currentCacheName).then(cache => {return cacheaddAll(urlsToCache);
-      })
-    );
-  
-  self.addEventListener('fetch', event => {
-    event.respondWith(
-      caches.match(event.request).then(response => {
-        if (response) {return response;}
-        {return fetch(event.request);}
-      })
-    );
-  });
-
-
-/*
-    
-  self.addEventListener('fetch', event => {
-    event.respondWith(
-      caches.match(event.request).then(response => {
-        return response || fetch(event.request);
-      })
-    );
-  });
-*/
-
-
-/*const cacheName = 'restaurant-reviews';
-
-self.addEventListener('install', event => {
-    event.waitUntil(
-      caches.open('cacheName')
-      .then(cache => {
-          console.log("in cache");
         return cache.addAll([
-          '/',
+         '/',
           './css/styles.css',
           './data/restaurants.json',
           './img/1.jpg',
@@ -78,22 +21,71 @@ self.addEventListener('install', event => {
           './js/dbhelper.js',
           './js/main.js',
           './js/restaurant_info.js',
+          '/js/sw_register.js',
           './index.html',
           './restaurant.html'
-        ]);
-      }).catch(error => console.log(error))
-    );
+        ])
+        .catch(error => {
+
+      });
+    }));
   });
-    
-  self.addEventListener('activate',  event => {
-      event.waitUntil(self.clients.claim());
-    });
-    
-  self.addEventListener('fetch', event => {
-    event.respondWith(
-      caches.match(event.request).then(response => {
-        return response || fetch(event.request);
+
+  self.addEventListener('activate', function(event) {
+    event.waitUntil(
+      caches.keys().then(function(cacheNames) {
+        return Promise.all(
+          cacheNames.filter(function(cacheName) {
+            return cacheName.startsWith('restaurant-static') &&
+                   cacheName != currentCacheName;
+          }).map(function(cacheName) {
+            return caches.delete(cacheName);
+          })
+        );
       })
     );
   });
-}*/
+  
+  
+  self.addEventListener('fetch', 
+  function(event) 
+  {
+    event.respondWith
+    (    
+      caches.match(event.request)
+      .then
+      (
+        function(response) 
+        {
+          if (response !== undefined) 
+          {
+            return response;
+          } 
+        
+          else 
+          {        
+            return fetch(event.request).then
+            (
+                function (response) 
+                {
+                  let responseClone = response.clone();
+                  
+                  caches.open(currentCacheName)
+                  .then
+                  (
+                    function (cache) 
+                    {
+                      cache.put(event.request, responseClone);
+                    }
+                  );
+                  return response;
+                }
+            );
+          }
+        }
+      ) // end of promise for cache match
+        
+    ); // end of respond with
+  
+  }
+  );

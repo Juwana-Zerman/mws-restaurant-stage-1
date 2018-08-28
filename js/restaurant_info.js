@@ -16,11 +16,11 @@ initMap = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {      
-      self.newMap = L.map('map'), {
+      self.newMap = L.map(document.getElementById('map'), {
         center: [restaurant.latlng.lat, restaurant.latlng.lng],
         zoom: 16,
         scrollWheelZoom: false
-      };
+      });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: 'pk.eyJ1Ijoianplcm1hbiIsImEiOiJjamt2ZnY2dXMwcTV3M3dtdHFsY3VlaDhoIn0.9Foo09oDgGM6BQYlTssuBA',
         maxZoom: 18,
@@ -181,7 +181,7 @@ createReviewHTML = (review) => {
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
   li.appendChild(comments);
-
+/*
   // Add Tab Index for the List Element
   var label_tabindex = document.createAttribute("tabindex");       
   label_tabindex.value = 0;
@@ -199,7 +199,7 @@ createReviewHTML = (review) => {
   aria_label.className = "aria-label";
   aria_label.innerHTML = "Rating " + review.rating + " stars. Date " + review.date + ". Reviewed By " + review.name + ". Comments: " + review.comments;
 
-  li.appendChild(aria_label);
+  li.appendChild(aria_label);*/
 
   return li;
 }

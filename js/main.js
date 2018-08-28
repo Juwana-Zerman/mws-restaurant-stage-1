@@ -72,20 +72,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
  * Initialize leaflet map, called from HTML.
  */
 initMap = () => {
-  // sw start
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').then(function(reg) {
-
-      if(reg.active) {
-        console.log('Service worker is active');
-      }
-      
-
-    }).catch(function() {
-      console.log('Service worker registration failed');
-    });
-  }
-  // sw end
+  
   self.newMap = L.map('map', {
         center: [40.722216, -73.987501],
         zoom: 12,

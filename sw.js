@@ -1,8 +1,8 @@
-const currentCacheName = 'restaurant-static-v4';
+let currentCacheName = 'restaurant-static-v1';
 
 self.addEventListener('install', event => {
     event.waitUntil(
-      caches.open(currentCacheName)
+      caches.open('currentCacheName')
       .then(cache => {
         return cache.addAll([
          '/',
@@ -21,7 +21,7 @@ self.addEventListener('install', event => {
           './js/dbhelper.js',
           './js/main.js',
           './js/restaurant_info.js',
-          '/js/sw_register.js',
+          
           './index.html',
           './restaurant.html'
         ])
@@ -36,7 +36,7 @@ self.addEventListener('install', event => {
       caches.keys().then(function(cacheNames) {
         return Promise.all(
           cacheNames.filter(function(cacheName) {
-            return cacheName.startsWith('restaurant-static') &&
+            return cacheName.startsWith('restaurant-') &&
                    cacheName != currentCacheName;
           }).map(function(cacheName) {
             return caches.delete(cacheName);
@@ -46,7 +46,18 @@ self.addEventListener('install', event => {
     );
   });
   
-  
+ 
+
+  self.addEventListener('fetch', function(event) {
+    event.respondWith(
+      caches.match(event.request)
+      .then(function(response) {
+        return response || fetch(event.request);
+      })
+    );
+  });
+
+  /*
   self.addEventListener('fetch', 
   function(event) 
   {
@@ -70,7 +81,7 @@ self.addEventListener('install', event => {
                 {
                   let responseClone = response.clone();
                   
-                  caches.open(currentCacheName)
+                  caches.open('v1')
                   .then
                   (
                     function (cache) 
@@ -88,4 +99,4 @@ self.addEventListener('install', event => {
     ); // end of respond with
   
   }
-  );
+  );*/

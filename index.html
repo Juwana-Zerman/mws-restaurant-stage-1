@@ -5,9 +5,11 @@
   <!--<meta charset="utf-8">-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+  
+  
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
   <!--<script src="js/sw_register.js"></script>-->
   <!--<script src="mws-restaurant-stage-1/sw.js"></script>-->
   <title>Restaurant Reviews</title>
@@ -17,9 +19,9 @@
   <!-- Beginning header -->
   <header>
     <!-- Beginning nav -->
-    <a href="#neighborhoods-select" class="skip" tabindex="1">Skip to Main Content</a>
+    <a href="#neighborhoods-select" class="skip" tabindex="0">Skip to Main Content</a>
     <nav>
-      <h1><a href="/" tabindex="2">Restaurant Reviews</a></h1>
+      <h1><a href="/" tabindex="0">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb
   <nav aria-label="Breadcrumb">
@@ -36,22 +38,22 @@
 
 
     <section id="map-container" role="application" aria-label="Restaurant Maps">
-      <div id="map" aria-label="location" role="application"></div>
+      <div id="map" aria-label="location" role="application" tabindex="0"></div>
     </section>
     <section id="filters">
-      <div id="filter-restaurant" class="filter-options">
+      <div id="filter-restaurant" class="filter-options" aria-label="filter results" tabindex="0">
         <h2>Filter Results</h2>
         <div class="filter-select">
-        <select id="neighborhoods-select" name="neighborhoods" aria-label="Neighborhoods filter" tabindex="3" onchange="updateRestaurants()" >
+        <select id="neighborhoods-select" name="neighborhoods" aria-label="Neighborhoods filter" tabindex="0" onchange="updateRestaurants()" >
           <option value="all">All Neighborhoods</option>
         </select>
 
-        <select id="cuisines-select" name="cuisines" aria-label="filter cuisines" tabindex="4" onchange="updateRestaurants()">
+        <select id="cuisines-select" name="cuisines" aria-label="filter cuisines" tabindex="0" onchange="updateRestaurants()">
           <option value="all">All Cuisines</option>
         </select>
       </div>
       </div>
-      <ul id="restaurants-list" role="list" aria-label="Restaurants List" tabindex="5"></ul>
+      <ul id="restaurants-list" role="list" aria-label="Restaurants List" tabindex="0"></ul>
 
     </section>
   </main>
@@ -66,7 +68,7 @@
 
   <footer id="footer">
     Copyright (c) 2017 
-    <a href="/" tabindex="6">
+    <a href="/" tabindex="8">
       <strong>Restaurant Reviews</strong>
     </a> 
     All Rights Reserved.

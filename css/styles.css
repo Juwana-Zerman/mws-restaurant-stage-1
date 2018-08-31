@@ -37,7 +37,7 @@ a:hover, a:focus {
 	text-decoration: none;
 }
 a img{
-	border: none 0px #fff;
+	border: none 0px #39d;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: Arial, Helvetica, sans-serif;
@@ -47,6 +47,16 @@ h1, h2, h3, h4, h5, h6 {
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+.skip {
+  top: -30px;
+  left: 0;
+  z-index: 125;
+  position: absolute;
+}
+.skip:focus {
+  top:0;
+}
+
 #maincontent {
   background-color: #f3f3f3;
   min-height: 100%;
@@ -130,6 +140,9 @@ nav h1 a {
   align-items: center;
   text-align: center;
   height: auto;
+}
+.filter-options:focus {
+  color: #223;
 }
 .filter-options h2 {
   color: white;
@@ -377,15 +390,7 @@ nav h1 a {
 /*.aria-label {
   display: none;
 }*/
-.skip {
-  top: -30px;
-  left: 0;
-  z-index: 125;
-  position: absolute;
-}
-.skip:focus {
-  top:0;
-}
+
 /* ====================== Media Queries ====================== */
 @media only screen and (min-width: 0px) {
   #restaurants-list li {

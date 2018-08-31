@@ -109,7 +109,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
   const hours = document.getElementById('restaurant-hours');
   for (let key in operatingHours) {
     const row = document.createElement('tr');
-
+/*
     //Create Attribute for Tabindex on row
     let label_tabindex= document.createAttribute("tabindex");
     label_tabindex.value = 0;
@@ -119,7 +119,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     //Aria labelled by
     let label_attribute = document.createAttribute("aria-labelledby");
     label_attribute.value = key + "_label";
-    row.setAttributeNode(label_attribute);
+    row.setAttributeNode(label_attribute);*/
 
     const day = document.createElement('td');
     day.innerHTML = key;
@@ -130,12 +130,12 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     row.appendChild(time);
 
     hours.appendChild(row);
-
+/*
     //Aria label for row that speaks day & hours
     let aria_label = document.createElement('label');
     aria_label.id = key + "_label";
     aria_label.className = "aria-label";
-    aria_label.innerHTML = key + operatingHours[key];
+    aria_label.innerHTML = key + operatingHours[key];*/
   }
 }
 
@@ -180,7 +180,11 @@ createReviewHTML = (review) => {
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  
+  comments.setAttribute('tabindex', '0');
   li.appendChild(comments);
+  //li.setAttribute('tabindex', '8');
+  //li.setAttribute('aria-label', 'Reviews');
 /*
   // Add Tab Index for the List Element
   var label_tabindex = document.createAttribute("tabindex");       

@@ -23,25 +23,25 @@ This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://w
 
 ## Dependencies
 
-*Udacity Project Starter Code MWS Restaurant Reviews (Stage 1)https://github.com/udacity/mws-restaurant-stage-1
+* Udacity Project Starter Code MWS Restaurant Reviews (Stage 1)https://github.com/udacity/mws-restaurant-stage-1
 
-*Normalize.css
+* Normalize.css
 
-*Python 3.7
+* Python 3.7
 
-*Mapbox
+* Mapbox
 
-*Leafletjs
+* Leafletjs
 
-*HTML
+* HTML
 
-*CSS
+* CSS
 
-*JavaScript
+* JavaScript
 
 ##Credits
 
-*Starter code for the Restaurant Reviews Stage 1 App provided by Udacity for the Frontend and Mobile Web Specialist Nanodegree
+* Starter code for the Restaurant Reviews Stage 1 App provided by Udacity for the Frontend and Mobile Web Specialist Nanodegree
 
-*Tutorial used titled "Project 1 MWS Webinar with Doug Brown" at https://www.youtube.com/watch?v=92dtrNU1GQc 
+* Tutorial used titled "Project 1 MWS Webinar with Doug Brown" at https://www.youtube.com/watch?v=92dtrNU1GQc 
 

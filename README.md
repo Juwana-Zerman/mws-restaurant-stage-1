@@ -39,7 +39,7 @@ This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://w
 
 * JavaScript
 
-##Credits
+## Credits
 
 * Starter code for the Restaurant Reviews Stage 1 App provided by Udacity for the Frontend and Mobile Web Specialist Nanodegree
 

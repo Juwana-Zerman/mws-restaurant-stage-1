@@ -1,5 +1,7 @@
 # Restaurant Reviews App (Stage 1)
 
+## View Live Version of Completed Project here: 
+https://jzerman2018.github.io/mws-restaurant-stage-1/
 
 ## Project Instructions
 

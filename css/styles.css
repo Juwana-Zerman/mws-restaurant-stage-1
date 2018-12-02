@@ -319,7 +319,7 @@ nav h1 a {
 
 #restaurant-address {
 	font-size: 18px;
-	text-align: center;
+	text-align: left;
 	font-weight: bold;
 	/*width: 60%;*/
 }

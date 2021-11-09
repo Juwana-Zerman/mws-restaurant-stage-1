@@ -1,8 +1,5 @@
 # Restaurant Reviews App (Stage 1)
 
-## View Live Version of Completed Project here: 
-https://juwana-zerman.github.io/mws-restaurant-stage-1/
-
 ## Project Instructions
 
 For this project, a static webpage was given that lacks accessibility for screen readers and responsiveness for different sized displays. A service worker will be employed to create an offline experience and accessibility and responsive features will be added. 
